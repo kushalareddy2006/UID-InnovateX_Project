@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnovateX 2026 — Feedback</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════ NAVIGATION ════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-icon">IX</div>
+      <div class="nav-brand-text">
+        InnovateX
+        <span class="nav-brand-sub">Project Expo 2026</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">&#8962; Home</a></li>
+      <li><a href="projects.html">&#9881; Projects</a></li>
+      <li><a href="feedback.html" class="active">&#9998; Feedback</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ════ PAGE HEADER ════ -->
+  <div class="page-header">
+    <h1>Visitor Feedback</h1>
+    <p>Share your experience &bull; Help us improve &bull; Rate the projects you visited</p>
+  </div>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════
+         FEEDBACK FORM
+    ════════════════════════════════════════════ -->
+    <section class="section">
+      <h2 class="section-title">Submit Your Feedback</h2>
+      <p class="section-lead">Your feedback helps exhibiting teams and organizers continuously improve the expo experience.</p>
+
+      <!-- Success / Error alerts -->
+      <div id="fbSuccessAlert" class="hidden"></div>
+
+      <div class="form-card">
+        <h3 class="form-title">&#9998; Feedback Form</h3>
+        <p class="form-subtitle">All fields are required. Comments must be at least 20 characters long.</p>
+
+        <form id="feedbackForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Student Name -->
+            <div class="form-group">
+              <label for="fbStudentName">Your Name <span class="required">*</span></label>
+              <input type="text" id="fbStudentName" placeholder="Enter your full name" />
+              <span class="error-msg" id="err-fbStudentName"></span>
+            </div>
+
+            <!-- Register Number -->
+            <div class="form-group">
+              <label for="fbRegNumber">Register Number <span class="required">*</span></label>
+              <input type="text" id="fbRegNumber" placeholder="e.g. 22CS1001" />
+              <span class="error-msg" id="err-fbRegNumber"></span>
+            </div>
+
+            <!-- Project / Category Visited -->
+            <div class="form-group full-width">
+              <label for="fbCategory">Project / Category Visited <span class="required">*</span></label>
+              <select id="fbCategory">
+                <option value="">— Select the category / project you visited —</option>
+                <option value="CAT-001 — AI &amp; Machine Learning">CAT-001 — AI &amp; Machine Learning</option>
+                <option value="CAT-002 — Web &amp; Mobile App Dev">CAT-002 — Web &amp; Mobile App Dev</option>
+                <option value="CAT-003 — IoT &amp; Embedded Systems">CAT-003 — IoT &amp; Embedded Systems</option>
+                <option value="CAT-004 — Cybersecurity &amp; Blockchain">CAT-004 — Cybersecurity &amp; Blockchain</option>
+                <option value="CAT-005 — Data Science &amp; Analytics">CAT-005 — Data Science &amp; Analytics</option>
+                <option value="CAT-006 — Robotics &amp; Automation">CAT-006 — Robotics &amp; Automation</option>
+                <option value="General Expo Experience">General Expo Experience</option>
+              </select>
+              <span class="error-msg" id="err-fbCategory"></span>
+            </div>
+
+            <!-- Star Rating -->
+            <div class="form-group full-width">
+              <label>Rating <span class="required">*</span> &nbsp;<span style="color:var(--text-muted);text-transform:none;letter-spacing:0;font-size:0.75rem;font-weight:400;">(1 = Poor, 5 = Excellent)</span></label>
+              <div class="star-rating" id="starRating">
+                <!-- Stars rendered in reverse so CSS sibling trick works -->
+                <input type="radio" name="rating" id="star5" value="5" />
+                <label for="star5" title="5 - Excellent">&#9733;</label>
+                <input type="radio" name="rating" id="star4" value="4" />
+                <label for="star4" title="4 - Good">&#9733;</label>
+                <input type="radio" name="rating" id="star3" value="3" />
+                <label for="star3" title="3 - Average">&#9733;</label>
+                <input type="radio" name="rating" id="star2" value="2" />
+                <label for="star2" title="2 - Below Average">&#9733;</label>
+                <input type="radio" name="rating" id="star1" value="1" />
+                <label for="star1" title="1 - Poor">&#9733;</label>
+              </div>
+              <span class="error-msg" id="err-fbRating"></span>
+            </div>
+
+            <!-- Comments -->
+            <div class="form-group full-width">
+              <label for="fbComments">Comments <span class="required">*</span> &nbsp;<span id="charCount" style="color:var(--text-muted);text-transform:none;letter-spacing:0;font-size:0.75rem;font-weight:400;">0 / min 20 characters</span></label>
+              <textarea id="fbComments" rows="5" placeholder="Share your detailed observations, suggestions, and overall experience (minimum 20 characters)…"></textarea>
+              <span class="error-msg" id="err-fbComments"></span>
+            </div>
+
+          </div><!-- /.form-grid -->
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">&#10004; Submit Feedback</button>
+            <button type="button" class="btn btn-danger" onclick="resetFeedbackForm()">&#8635; Clear Form</button>
+          </div>
+        </form>
+      </div><!-- /.form-card -->
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         FEEDBACK SUMMARY
+    ════════════════════════════════════════════ -->
+    <section class="section" style="padding-top:0;" id="fbSummarySection">
+      <h2 class="section-title">Feedback Summary</h2>
+      <p class="section-lead">Aggregated ratings and visitor comments from this session.</p>
+
+      <!-- counter strip -->
+      <div class="counter-strip">
+        <div class="counter-badge">
+          <div>
+            <div class="count-num" id="totalFeedbacks">0</div>
+            <div class="count-label">Total Feedback(s)</div>
+          </div>
+        </div>
+        <div class="counter-badge">
+          <div>
+            <div class="count-num" id="avgRatingDisplay" style="color:var(--warning)">–</div>
+            <div class="count-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback-summary-card" id="fbSummaryCard">
+        <h3>&#9733; Visitor Ratings &amp; Comments</h3>
+
+        <div class="avg-rating-display" id="avgRatingBig">
+          <div class="avg-number" id="avgNum">–</div>
+          <div>
+            <div class="avg-stars" id="avgStars">&#9734;&#9734;&#9734;&#9734;&#9734;</div>
+            <div class="avg-label" id="avgLabelText">No feedback submitted yet</div>
+          </div>
+        </div>
+
+        <div id="feedbackEntriesContainer">
+          <p style="color:var(--text-muted);font-size:0.88rem;font-style:italic;text-align:center;padding:2rem 0;">
+            No feedback submitted yet. Be the first to share your experience!
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ════ FOOTER ════ -->
+  <footer>
+    <div class="footer-grid">
+
+      
+
+      <div class="footer-col">
+        <h4>Department Contact</h4>
+        <div class="footer-contact-item">
+          <span class="icon">&#9742;</span>
+          <span>+91 98765 43210 (Dept. Office)</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9742;</span>
+          <span>+91 98765 43211 (Expo Coordinator)</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9993;</span>
+          <span>innovatex2026@college.ac.in</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9993;</span>
+          <span>dept.cse@college.ac.in</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Department Info</h4>
+        <div class="footer-contact-item">
+          <span class="icon">&#127979;</span>
+          <span>Dept. of Computer Science &amp; Engineering</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#128205;</span>
+          <span>Technology Block B, 3rd Floor, Main Campus</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#128336;</span>
+          <span>Mon–Sat: 9:00 AM – 5:00 PM</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#127760;</span>
+          <span>www.college.ac.in/innovatex</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&#169; 2026 InnovateX Project Expo &mdash; All Rights Reserved</span>
+      <span>Developed by <a href="#">AI Dept. Tech Team</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

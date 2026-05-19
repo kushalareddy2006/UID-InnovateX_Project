@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnovateX 2026 — Projects &amp; Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════ NAVIGATION ════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+          <div class="nav-brand-text">
+        InnovateX
+        <span class="nav-brand-sub">Project Expo 2026</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">&#8962; Home</a></li>
+      <li><a href="projects.html" class="active">&#9881; Projects</a></li>
+      <li><a href="feedback.html">&#9998; Feedback</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ════ PAGE HEADER ════ -->
+  <div class="page-header">
+    <h1>Projects &amp; Registration</h1>
+    <p>Explore categories &bull; Register your innovation &bull; Compete for glory</p>
+  </div>
+
+  <main>
+    <!-- ════════════════════════════════════════════
+         SECTION 1: PROJECT CATEGORIES
+    ════════════════════════════════════════════ -->
+    <section class="section">
+      <h2 class="section-title">Project Categories</h2>
+      <p class="section-lead">Five domains of innovation — find your arena.</p>
+
+      <!-- COUNTER STRIP -->
+      <div class="counter-strip">
+        <div class="counter-badge">
+          <div>
+            <div class="count-num" id="totalCount">0</div>
+            <div class="count-label">Total Registrations</div>
+          </div>
+        </div>
+        <div class="counter-badge">
+          <div>
+            <div class="count-num" style="color:var(--neon-green)">5</div>
+            <div class="count-label">Open Categories</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="categoryTable">
+          <thead>
+            <tr>
+              <th>Cat. ID</th>
+              <th>Category Name</th>
+              <th>Domain</th>
+              <th>Date &amp; Time</th>
+              <th>Venue</th>
+              <th>Reg. Fee</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CAT-001</td>
+              <td>Artificial Intelligence &amp; Machine Learning</td>
+              <td>AI / ML</td>
+              <td>21 Mar 2026 &mdash; 09:00 AM</td>
+              <td>Hall A, Tech Block B</td>
+              <td>&#8377; 300</td>
+              <td><span class="status-badge status-open">Open</span></td>
+            </tr>
+            <tr>
+              <td>CAT-002</td>
+              <td>Web &amp; Mobile Application Dev</td>
+              <td>Software Dev</td>
+              <td>21 Mar 2026 &mdash; 10:00 AM</td>
+              <td>Hall B, Tech Block B</td>
+              <td>&#8377; 250</td>
+              <td><span class="status-badge status-open">Open</span></td>
+            </tr>
+            <tr>
+              <td>CAT-003</td>
+              <td>IoT &amp; Embedded Systems</td>
+              <td>Hardware / IoT</td>
+              <td>21 Mar 2026 &mdash; 11:00 AM</td>
+              <td>Lab 301, Tech Block B</td>
+              <td>&#8377; 350</td>
+              <td><span class="status-badge status-closed">Closed</span></td>
+            </tr>
+            <tr>
+              <td>CAT-004</td>
+              <td>Cybersecurity &amp; Blockchain</td>
+              <td>Security</td>
+              <td>22 Mar 2026 &mdash; 09:00 AM</td>
+              <td>Hall C, Tech Block B</td>
+              <td>&#8377; 300</td>
+              <td><span class="status-badge status-open">Open</span></td>
+            </tr>
+            <tr>
+              <td>CAT-005</td>
+              <td>Data Science &amp; Analytics</td>
+              <td>Data / Analytics</td>
+              <td>22 Mar 2026 &mdash; 10:30 AM</td>
+              <td>Hall D, Tech Block B</td>
+              <td>&#8377; 250</td>
+              <td><span class="status-badge status-open">Open</span></td>
+            </tr>
+            <tr>
+              <td>CAT-006</td>
+              <td>Robotics &amp; Automation</td>
+              <td>Robotics</td>
+              <td>22 Mar 2026 &mdash; 02:00 PM</td>
+              <td>Robotics Arena, Block A</td>
+              <td>&#8377; 400</td>
+              <td><span class="status-badge status-open">Open</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- legend -->
+      <p style="color:var(--text-muted);font-size:0.78rem;margin-top:1rem;font-family:'Share Tech Mono',monospace;">
+        &#9679; CLOSED categories cannot accept new registrations. Please choose an OPEN category.
+      </p>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 2: SUCCESS MESSAGE (hidden initially)
+    ════════════════════════════════════════════ -->
+    <section class="section" style="padding-top:0;" id="successSection" class="hidden">
+      <div id="successAlert" class="hidden"></div>
+      <div id="regDetailsPanel" class="hidden"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 3: REGISTRATION FORM
+    ════════════════════════════════════════════ -->
+    <section class="section" style="padding-top:0;" id="formSection">
+      <h2 class="section-title">Project Registration</h2>
+      <p class="section-lead">Complete the form below to register your project. All fields are mandatory.</p>
+
+      <div class="form-card">
+        <h3 class="form-title">&#9881; New Project Registration</h3>
+        <p class="form-subtitle">Team size: minimum 2, maximum 4 members &bull; Each register number may only register once per project title</p>
+
+        <form id="regForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Student Name -->
+            <div class="form-group">
+              <label for="studentName">Student Name <span class="required">*</span></label>
+              <input type="text" id="studentName" placeholder="Enter full name" />
+              <span class="error-msg" id="err-studentName"></span>
+            </div>
+
+            <!-- Register Number -->
+            <div class="form-group">
+              <label for="regNumber">Register Number <span class="required">*</span></label>
+              <input type="text" id="regNumber" placeholder="e.g. 22CS1001" />
+              <span class="error-msg" id="err-regNumber"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email ID <span class="required">*</span></label>
+              <input type="email" id="email" placeholder="student@college.ac.in" />
+              <span class="error-msg" id="err-email"></span>
+            </div>
+
+            <!-- Mobile -->
+            <div class="form-group">
+              <label for="mobile">Mobile Number <span class="required">*</span></label>
+              <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" />
+              <span class="error-msg" id="err-mobile"></span>
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+              <label for="department">Department <span class="required">*</span></label>
+              <select id="department">
+                <option value="">— Select Department —</option>
+                <option>Computer Science &amp; Engineering</option>
+                <option>Electronics &amp; Communication Engg.</option>
+                <option>Electrical Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Information Technology</option>
+                <option>Civil Engineering</option>
+                <option>Mathematics</option>
+                <option>Physics</option>
+              </select>
+              <span class="error-msg" id="err-department"></span>
+            </div>
+
+            <!-- Year of Study -->
+            <div class="form-group">
+              <label for="yearOfStudy">Year of Study <span class="required">*</span></label>
+              <select id="yearOfStudy">
+                <option value="">— Select Year —</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+                <option value="PG1">PG 1st Year</option>
+                <option value="PG2">PG 2nd Year</option>
+              </select>
+              <span class="error-msg" id="err-yearOfStudy"></span>
+            </div>
+
+            <!-- Project Title -->
+            <div class="form-group full-width">
+              <label for="projectTitle">Project Title <span class="required">*</span></label>
+              <input type="text" id="projectTitle" placeholder="Enter a unique, descriptive project title" />
+              <span class="error-msg" id="err-projectTitle"></span>
+            </div>
+
+            <!-- Project Category -->
+            <div class="form-group">
+              <label for="projectCategory">Project Category <span class="required">*</span></label>
+              <select id="projectCategory">
+                <option value="">— Select Category —</option>
+                <option value="CAT-001|open">CAT-001 — AI &amp; Machine Learning</option>
+                <option value="CAT-002|open">CAT-002 — Web &amp; Mobile App Dev</option>
+                <option value="CAT-003|closed">CAT-003 — IoT &amp; Embedded Systems (CLOSED)</option>
+                <option value="CAT-004|open">CAT-004 — Cybersecurity &amp; Blockchain</option>
+                <option value="CAT-005|open">CAT-005 — Data Science &amp; Analytics</option>
+                <option value="CAT-006|open">CAT-006 — Robotics &amp; Automation</option>
+              </select>
+              <span class="error-msg" id="err-projectCategory"></span>
+            </div>
+
+            <!-- Team Name -->
+            <div class="form-group">
+              <label for="teamName">Team Name <span class="required">*</span></label>
+              <input type="text" id="teamName" placeholder="Enter your team name" />
+              <span class="error-msg" id="err-teamName"></span>
+            </div>
+
+            <!-- Number of Team Members -->
+            <div class="form-group">
+              <label for="teamSize">Number of Team Members <span class="required">*</span></label>
+              <input type="number" id="teamSize" placeholder="Between 2 and 4" min="2" max="4" />
+              <span class="error-msg" id="err-teamSize"></span>
+            </div>
+
+          </div><!-- /.form-grid -->
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">&#10004; Register Project</button>
+            <button type="button" class="btn btn-danger" onclick="resetForm()">&#8635; Reset Form</button>
+          </div>
+
+        </form>
+      </div><!-- /.form-card -->
+    </section>
+
+  </main>
+
+  <!-- ════ FOOTER ════ -->
+  <footer>
+    <div class="footer-grid">
+
+      
+
+      <div class="footer-col">
+        <h4>Department Contact</h4>
+        <div class="footer-contact-item">
+          <span class="icon">&#9742;</span>
+          <span>+91 98765 43210 (Dept. Office)</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9742;</span>
+          <span>+91 98765 43211 (Expo Coordinator)</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9993;</span>
+          <span>innovatex2026@college.ac.in</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#9993;</span>
+          <span>dept.cse@college.ac.in</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Department Info</h4>
+        <div class="footer-contact-item">
+          <span class="icon">&#127979;</span>
+          <span>Dept. of Computer Science &amp; Engineering</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#128205;</span>
+          <span>Technology Block B, 3rd Floor, Main Campus</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#128336;</span>
+          <span>Mon–Sat: 9:00 AM – 5:00 PM</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">&#127760;</span>
+          <span>www.college.ac.in/innovatex</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&#169; 2026 InnovateX Project Expo &mdash; All Rights Reserved</span>
+      <span>Developed by <a href="#">AI Dept. Tech Team</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
