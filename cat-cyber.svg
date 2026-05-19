@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <rect width="400" height="260" fill="#040a14" rx="10"/>
+  <!-- Shield -->
+  <path d="M200 45 L270 75 L270 145 Q270 185 200 215 Q130 185 130 145 L130 75 Z" fill="none" stroke="#00f5ff" stroke-width="2" opacity="0.7"/>
+  <path d="M200 60 L258 85 L258 148 Q258 180 200 205 Q142 180 142 148 L142 85 Z" fill="#00f5ff" opacity="0.04"/>
+  <!-- Lock icon inside shield -->
+  <rect x="183" y="120" width="34" height="26" fill="none" stroke="#9b30ff" stroke-width="1.5" rx="3" opacity="0.8"/>
+  <path d="M190 120 Q190 108 200 108 Q210 108 210 120" fill="none" stroke="#9b30ff" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="200" cy="131" r="4" fill="#9b30ff" opacity="0.8"/>
+  <!-- Orbiting dots -->
+  <circle cx="110" cy="100" r="4" fill="#00f5ff" opacity="0.6"/>
+  <circle cx="290" cy="100" r="4" fill="#00f5ff" opacity="0.6"/>
+  <circle cx="100" cy="160" r="3" fill="#9b30ff" opacity="0.5"/>
+  <circle cx="300" cy="160" r="3" fill="#9b30ff" opacity="0.5"/>
+  <text x="200" y="240" text-anchor="middle" font-family="monospace" font-size="13" fill="#00f5ff" letter-spacing="2" opacity="0.9">CYBERSECURITY</text>
+</svg>

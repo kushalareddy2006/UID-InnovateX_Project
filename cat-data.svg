@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <rect width="400" height="260" fill="#040a14" rx="10"/>
+  <!-- Bar chart -->
+  <rect x="55"  y="160" width="30" height="50" fill="#0080ff" opacity="0.6" rx="3"/>
+  <rect x="100" y="120" width="30" height="90" fill="#00f5ff" opacity="0.6" rx="3"/>
+  <rect x="145" y="90"  width="30" height="120" fill="#9b30ff" opacity="0.6" rx="3"/>
+  <rect x="190" y="130" width="30" height="80"  fill="#0080ff" opacity="0.6" rx="3"/>
+  <rect x="235" y="75"  width="30" height="135" fill="#00f5ff" opacity="0.6" rx="3"/>
+  <rect x="280" y="110" width="30" height="100" fill="#9b30ff" opacity="0.6" rx="3"/>
+  <rect x="325" y="95"  width="30" height="115" fill="#00ff88" opacity="0.6" rx="3"/>
+  <!-- Axis -->
+  <line x1="45" y1="210" x2="365" y2="210" stroke="#4a6d8a" stroke-width="1.5" opacity="0.6"/>
+  <line x1="45" y1="60"  x2="45"  y2="210" stroke="#4a6d8a" stroke-width="1.5" opacity="0.6"/>
+  <!-- Trend line -->
+  <polyline points="70,165 115,125 160,95 205,135 250,80 295,115 340,100"
+    fill="none" stroke="#ffcc00" stroke-width="2" stroke-dasharray="5,3" opacity="0.8"/>
+  <text x="200" y="245" text-anchor="middle" font-family="monospace" font-size="13" fill="#0080ff" letter-spacing="2" opacity="0.9">DATA SCIENCE &amp; ANALYTICS</text>
+</svg>
